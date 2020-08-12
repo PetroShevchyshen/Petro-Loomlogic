@@ -1,0 +1,44 @@
+.information_wrapper
+  height: 700px
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+input
+  margin-bottom: 10px
+  &.ng-invalid.ng-touched
+    border: 2px solid #ff0000
+  &.ng-valid.ng-touched
+    border: 2px solid green
+.btn
+  width: 60px
+  height: 40px
+  background-color: black
+  border-radius: 15%
+  border: none
+  color: #ffffff
+  margin-bottom: 10px
+  font-size: 12px
+  &:focus
+    border: none
+    outline: none
+  &:hover
+    cursor: pointer
+.user_image
+  width: 300px
+  height: 350px
+.formCard
+  display: flex
+  justify-content: center
+  flex-direction: column
+  .preview
+    width: 300px
+    height: 350px
+    padding-bottom: 20px
+  small
+    padding-bottom: 10px
+    color: red
+  label
+    padding-bottom: 5px
+  .btn
+    align-self: center
