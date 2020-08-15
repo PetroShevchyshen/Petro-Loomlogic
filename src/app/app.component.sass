@@ -1,22 +1,31 @@
 .container
   max-width: 1000px
   margin: 0 auto
+
 a
   text-decoration: none
   color: #1dcfc0
+
 li
   list-style: none
   padding-left: 10px
-  &.active a
-    color: white
-    cursor: default
+  &.active
+    a
+      color: white
+      cursor: default
+
 ul
   display: flex
   align-items: center
   justify-content: center
-nav
+
+.navbar
   display: flex
   height: 50px
-  background-color: black
+  background-color: #000000
   justify-content: space-around
   align-items: center
+
+.navbar__logo
+  font-size: 36px
+  font-weight: 600

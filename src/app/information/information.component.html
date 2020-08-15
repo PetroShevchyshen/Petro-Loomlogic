@@ -1,6 +1,6 @@
-<div class="information_wrapper">
+<div class="information-wrapper">
   <form [formGroup]="name">
-    <div *ngIf="toggleName" class="formCard">
+    <div *ngIf="toggleName" class="form-card">
       <label>Name</label>
       <input #nameInput type="text" (input)="onInput($event)" placeholder="Name" formControlName="name">
       <small *ngIf="name.invalid && name.touched">Name is invalid. Name is required</small>
@@ -8,7 +8,7 @@
     </div>
   </form>
   <form [formGroup]="email">
-    <div *ngIf="!toggleName && !toggleEmail" class="formCard">
+    <div *ngIf="!toggleName && !toggleEmail" class="form-card">
       <label>Email</label>
       <input type="email" (input)="onInput($event)" placeholder="Email" formControlName="email">
       <small *ngIf="email.invalid && email.touched">Email is invalid. Email is required</small>
@@ -16,27 +16,27 @@
     </div>
   </form>
   <form [formGroup]="phone">
-    <div *ngIf="toggleEmail && !togglePhone" class="formCard">
+    <div *ngIf="toggleEmail && !togglePhone" class="form-card">
       <label>Phone</label>
       <input type="tel" (input)="onInput($event)" placeholder="+1XXX-XXX-XXXX" formControlName="phone">
       <small *ngIf="phone.invalid && phone.touched">Phone is invalid. Phone is required</small>
       <button (click)="inputPhone()" type="submit" class="btn" [disabled]="phone.invalid">Next</button>
     </div>
   </form>
-  <div *ngIf="togglePhone && !toggleImage" class="formCard">
+  <div *ngIf="togglePhone && !toggleImage" class="form-card">
     <label>Image</label>
     <img class="preview" [ngStyle]="{'display': showImage? 'block' : 'none'}" [src]="person.image" alt="previewImage">
     <input type="file" accept="image/*" (change)="addImage($event.target)">
     <small *ngIf="buttonStatus">Image is required</small>
     <button (click)="sendImage()" type="submit" [disabled]="buttonStatus" class="btn">Next</button>
   </div>
-  <div *ngIf="toggleImage && !toggleSubmit" class="formSubmit">
+  <div *ngIf="toggleImage && !toggleSubmit" class="form-card">
     <p><b>Name: </b>{{person.name}}</p>
     <p><b>Email: </b>{{person.email}}</p>
     <p><b>Phone: </b>{{person.phone}}</p>
     <img src="{{person.image}}" alt="uerImage" class="user_image">
     <div>
-      <button (click)="goToResultsPage()" type="button" class="btn">Submit</button>
+      <button (click)="goToResultsPage()" type="button" class="form-card__button">Submit</button>
     </div>
   </div>
 </div>

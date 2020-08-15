@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
-
-
 @Component({
   selector: 'app-information',
   templateUrl: './information.component.html',
   styleUrls: ['./information.component.sass']
 })
 export class InformationComponent implements OnInit {
-
   name: FormGroup;
   email: FormGroup;
   phone: FormGroup;
@@ -74,16 +70,12 @@ export class InformationComponent implements OnInit {
 
   ngOnInit() {
     this.name = new FormGroup({
-      // tslint:disable-next-line:max-line-length
       name: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]+([a-zA-Z]*)*$/), Validators.maxLength(20), Validators.minLength(3)])
     });
     this.email = new FormGroup({
-      // tslint:disable-next-line:max-line-length
       email: new FormControl('', [Validators.email, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/), Validators.required])
     });
     this.phone = new FormGroup({
-      // tslint:disable-next-line:max-line-length
-      // tslint:disable-next-line:no-bitwise
       phone: new FormControl('', [Validators.required, Validators.pattern(/^[+][1][1-9]\d{2}[-][1-9]\d{2}[-]\d{4}$/)])
     });
   }
