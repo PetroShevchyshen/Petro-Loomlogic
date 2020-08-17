@@ -4,9 +4,9 @@
   <button class="main-wrapper__button" (click)="goToInformationPage()">Check</button>
 </div>
 <div *ngIf="localWrapper" class="main-user-information">
-  <p><b>Name: </b>{{userCard.name}}</p>
-  <p><b>Email: </b>{{userCard.email}}</p>
-  <p><b>Phone: </b>{{userCard.phone}}</p>
+  <p>Name: </p><span>{{userCard.name}}</span>
+  <p>Email: </p><span>{{userCard.email}}</span>
+  <p>Phone: </p><span>{{userCard.phone}}</span>
   <img src="{{userCard.image}}" alt="User" class="user-information__image">
-  <p><b>Your score number: </b>{{randomNumber}}</p>
+  <p>Your score number: </p><span>{{randomNumber}}</span>
 </div>

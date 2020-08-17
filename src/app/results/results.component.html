@@ -1,9 +1,9 @@
 <div *ngIf="resultsWrapper" class="results_wrapper">
-  <p><b>Name: </b>{{userCard.name}}</p>
-  <p><b>Email: </b>{{userCard.email}}</p>
-  <p><b>Phone: </b>{{userCard.phone}}</p>
-  <img src="{{userCard.image}}" alt="User" class="user_image">
-  <p><b>Your score number: </b>{{randomNumber}}</p>
+  <p>Name: </p><span>{{userCard.name}}</span>
+  <p>Email: </p><span>{{userCard.email}}</span>
+  <p>Phone: </p><span>{{userCard.phone}}</span>
+  <img src="{{userCard.image}}" alt="User" class="user-information__image">
+  <p>Your score number: </p><span>{{randomNumber}}</span>
 </div>
 <div *ngIf="answer" class="answer-result">
   <h1>Oops, something wrong </h1>

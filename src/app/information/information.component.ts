@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-information',
@@ -7,10 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./information.component.sass']
 })
 export class InformationComponent implements OnInit {
-  name: FormGroup;
-  email: FormGroup;
-  phone: FormGroup;
-  inputValue = '';
+  form: FormGroup;
   showImage = false;
   toggleName = true;
   toggleEmail = false;
@@ -26,7 +23,8 @@ export class InformationComponent implements OnInit {
   };
 
   constructor(
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) { }
 
   goToResultsPage() {
@@ -37,17 +35,17 @@ export class InformationComponent implements OnInit {
 
   inputName() {
     this.toggleName = !this.toggleName;
-    this.person.name = this.inputValue;
+    this.person.name = this.form.value.name;
   }
 
   inputEmail() {
     this.toggleEmail = !this.toggleEmail;
-    this.person.email = this.inputValue;
+    this.person.email = this.form.value.email;
   }
 
   inputPhone() {
     this.togglePhone = !this.togglePhone;
-    this.person.phone = this.inputValue;
+    this.person.phone = this.form.value.phone;
   }
 
   addImage(target: HTMLInputElement): void {
@@ -69,19 +67,17 @@ export class InformationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.name = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]+([a-zA-Z]*)*$/), Validators.maxLength(20), Validators.minLength(3)])
-    });
-    this.email = new FormGroup({
-      email: new FormControl('', [Validators.email, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/), Validators.required])
-    });
-    this.phone = new FormGroup({
-      phone: new FormControl('', [Validators.required, Validators.pattern(/^[+][1][1-9]\d{2}[-][1-9]\d{2}[-]\d{4}$/)])
-    });
+    this.form = this.fb.group({
+      name: ['', [Validators.required, Validators.pattern(/^[a-zA-Z]+([a-zA-Z]*)*$/), Validators.maxLength(20), Validators.minLength(3)]],
+      email: ['', [Validators.email, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/), Validators.required]],
+      phone: ['', [Validators.required, Validators.pattern(/^[+][1][1-9]\d{2}[-][1-9]\d{2}[-]\d{4}$/)]]
+    })
   }
 
-  onInput(event: any) {
-    this.inputValue = event.target.value;
+  isControlInvalid(controlName: string): boolean{
+    const control = this.form.controls[controlName];
+    const result = control.invalid && control.touched;
+    return result;
   }
 
 }
