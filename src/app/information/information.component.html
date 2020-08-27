@@ -1,37 +1,37 @@
 <div class="information-wrapper">
   <form [formGroup]="form">
-    <div *ngIf="toggleName" class="form-card">
+    <div *ngIf="togglePage.toggleName" class="form-card">
       <label for="name">Name</label>
       <input type="text" placeholder="Name" formControlName="name">
       <small *ngIf="isControlInvalid('name')">Name is invalid. Name is required</small>
-      <button (click)="inputName()" type="button" [disabled]="isControlInvalid('name')" class="form-card__button">Next</button>
+      <button (click)="changeFormInput('name')" type="button" [disabled]="isControlInvalid('name')" class="form-card__button">Next</button>
     </div>
-    <div *ngIf="!toggleName && !toggleEmail" class="form-card">
+    <div *ngIf="!togglePage.toggleName && !togglePage.toggleEmail" class="form-card">
       <label for="email">Email</label>
       <input type="email" placeholder="Email" formControlName="email">
       <small *ngIf="isControlInvalid('email')">Email is invalid. Email is required</small>
-      <button (click)="inputEmail()" type="button" class="form-card__button" [disabled]="isControlInvalid('email')">Next</button>
+      <button (click)="changeFormInput('email')" type="button" class="form-card__button" [disabled]="isControlInvalid('email')">Next</button>
     </div>
-    <div *ngIf="toggleEmail && !togglePhone" class="form-card">
+    <div *ngIf="togglePage.toggleEmail && !togglePage.togglePhone" class="form-card">
       <label for="phone">Phone</label>
       <input type="tel" placeholder="+1XXX-XXX-XXXX" formControlName="phone">
       <small *ngIf="isControlInvalid('phone')">Phone is invalid. Phone is required</small>
-      <button (click)="inputPhone()" type="button" class="form-card__button" [disabled]="isControlInvalid('phone')">Next</button>
+      <button (click)="changeFormInput('phone')" type="button" class="form-card__button" [disabled]="isControlInvalid('phone')">Next</button>
     </div>
-    <div *ngIf="togglePhone && !toggleImage" class="form-card">
+    <div *ngIf="togglePage.togglePhone && !togglePage.toggleImage" class="form-card">
       <label for="image">Image</label>
-      <img class="preview" [ngStyle]="{'display': showImage? 'block' : 'none'}" [src]="person.image" alt="previewImage">
-      <input type="file" accept="image/*" (change)="addImage($event.target)">
-      <small *ngIf="buttonStatus">Image is required</small>
-      <button (click)="sendImage()" type="button" class="form-card__button">Next</button>
+      <img class="preview" [ngStyle]="{'display': user.showImage? 'block' : 'none'}" [src]="user.person.image" alt="previewImage">
+      <input type="file" accept="image/*" (change)="user.addImage($event.target)">
+      <small *ngIf="user.buttonStatus">Image is required</small>
+      <button (click)="changeFormInput('image')" type="button" class="form-card__button">Next</button>
     </div>
-    <div *ngIf="toggleImage && !toggleSubmit" class="form-card">
-      <p><b>Name: </b>{{person.name}}</p>
-      <p><b>Email: </b>{{person.email}}</p>
-      <p><b>Phone: </b>{{person.phone}}</p>
-      <img src="{{person.image}}" alt="uerImage" class="user_image">
+    <div *ngIf="togglePage.toggleImage && !togglePage.toggleSubmit" class="form-card">
+      <p><b>Name: </b>{{user.person.name}}</p>
+      <p><b>Email: </b>{{user.person.email}}</p>
+      <p><b>Phone: </b>{{user.person.phone}}</p>
+      <img src="{{user.person.image}}" alt="uerImage" class="user_image">
       <div>
-        <button (click)="goToResultsPage()" type="submit" class="form-card__button">Submit</button>
+        <button (click)="goToResultsPage(); user.setUser()" type="submit" class="form-card__button">Submit</button>
       </div>
     </div>
   </form>

@@ -1,11 +1,11 @@
 <div *ngIf="resultsWrapper" class="results_wrapper">
-  <p>Name: </p><span>{{userCard.name}}</span>
-  <p>Email: </p><span>{{userCard.email}}</span>
-  <p>Phone: </p><span>{{userCard.phone}}</span>
-  <img src="{{userCard.image}}" alt="User" class="user-information__image">
-  <p>Your score number: </p><span>{{randomNumber}}</span>
+  <p>Name: </p><span>{{card.name}}</span>
+  <p>Email: </p><span>{{card.email}}</span>
+  <p>Phone: </p><span>{{card.phone}}</span>
+  <img src="{{card.image}}" alt="User" class="user-information__image">
+  <p>Your score number: </p><span>{{user.randomNumber}}</span>
 </div>
-<div *ngIf="answer" class="answer-result">
+<div *ngIf="!resultsWrapper" class="answer-result">
   <h1>Oops, something wrong </h1>
   <h3>Try check your credit score</h3>
   <button class="btn" (click)="goToInformationPage()">Check</button>

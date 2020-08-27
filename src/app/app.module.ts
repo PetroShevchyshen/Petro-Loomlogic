@@ -7,7 +7,6 @@ import { InformationComponent } from './information/information.component';
 import { ResultsComponent } from './results/results.component';
 import { AppRoutingModule } from './app-routing.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
