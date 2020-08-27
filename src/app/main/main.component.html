@@ -9,4 +9,5 @@
   <p>Phone: </p><span>{{card.phone}}</span>
   <img src="{{card.image}}" alt="User" class="user-information__image">
   <p>Your score number: </p><span>{{user.randomNumber}}</span>
+  <button (click)="user.clearLocalStorage()" class="main-wrapper__button">Remove</button>
 </div>

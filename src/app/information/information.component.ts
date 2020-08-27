@@ -14,7 +14,6 @@ export class InformationComponent implements OnInit {
     toggleEmail: false,
     togglePhone: false,
     toggleImage: false,
-    toggleSubmit: false
   };
 
   constructor(
@@ -38,10 +37,11 @@ export class InformationComponent implements OnInit {
   isControlInvalid(controlName: string): boolean {
     const control = this.form.controls[controlName];
     const result = control.invalid && control.touched;
+    console.log(result);
     return result;
   }
 
-  public changeFormInput(value): void{
+  public changeFormInput(value: string): void {
     switch (value) {
       case 'name':
         this.togglePage.toggleName = false;

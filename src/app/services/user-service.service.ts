@@ -38,4 +38,9 @@ export class UserServiceService {
       }
     }
   }
+
+  public clearLocalStorage(): void{
+    localStorage.clear();
+    window.location.reload();
+  }
 }

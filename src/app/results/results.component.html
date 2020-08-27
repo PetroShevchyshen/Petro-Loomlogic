@@ -1,9 +1,10 @@
-<div *ngIf="resultsWrapper" class="results_wrapper">
+<div *ngIf="resultsWrapper" class="results-wrapper">
   <p>Name: </p><span>{{card.name}}</span>
   <p>Email: </p><span>{{card.email}}</span>
   <p>Phone: </p><span>{{card.phone}}</span>
   <img src="{{card.image}}" alt="User" class="user-information__image">
   <p>Your score number: </p><span>{{user.randomNumber}}</span>
+  <button (click)="user.clearLocalStorage()" class="result-wrapper__button">Remove</button>
 </div>
 <div *ngIf="!resultsWrapper" class="answer-result">
   <h1>Oops, something wrong </h1>
