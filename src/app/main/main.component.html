@@ -1,13 +1,13 @@
-<div *ngIf="main" class="main-wrapper">
+<div *ngIf="showInformBlock" class="main-wrapper">
   <h1>Welcome to Credit Score</h1>
   <h3>Check your credit score</h3>
   <button class="main-wrapper__button" (click)="goToInformationPage()">Check</button>
 </div>
-<div *ngIf="!main" class="main-user-information">
+<div *ngIf="!showInformBlock" class="main-user-information">
   <p>Name: </p><span>{{card.name}}</span>
   <p>Email: </p><span>{{card.email}}</span>
   <p>Phone: </p><span>{{card.phone}}</span>
   <img src="{{card.image}}" alt="User" class="user-information__image">
   <p>Your score number: </p><span>{{user.randomNumber}}</span>
-  <button (click)="user.clearLocalStorage()" class="main-wrapper__button">Remove</button>
+  <button (click)="clearStorage()" class="main-wrapper__button">Remove</button>
 </div>

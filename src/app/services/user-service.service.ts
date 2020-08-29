@@ -4,10 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserServiceService {
-  public userCard: Array<Text>;
-  public randomNumber = (Math.random() * 100).toFixed(0);
+  userCard: Array<Text>;
+  randomNumber = (Math.random() * 100).toFixed(0);
   buttonStatus = true;
   showImage = false;
+  showInformBlock = true;
+  parsedStorage = JSON.parse(localStorage.getItem('user'));
   person = {
     name: '',
     email: '',
@@ -15,16 +17,16 @@ export class UserServiceService {
     image: {},
   };
 
-  public getUser(): Array<Text> {
-    return this.userCard = JSON.parse(localStorage.getItem('user'));
+  getUser(): Array<Text> {
+    return this.userCard = this.parsedStorage;
   }
 
-  public setUser(): void {
+  setUser(): void {
     const user = JSON.stringify(this.person);
     localStorage.setItem('user', user);
   }
 
-  public addImage(target: HTMLInputElement): void {
+  addImage(target: HTMLInputElement): void {
     if (target.files[0]) {
       const file = target.files[0];
       const reader = new FileReader();
@@ -39,8 +41,17 @@ export class UserServiceService {
     }
   }
 
-  public clearLocalStorage(): void{
+  clearLocalStorage(): void {
     localStorage.clear();
     window.location.reload();
+  }
+
+  checkStorage(): void {
+    if (this.parsedStorage !== null) {
+      this.showInformBlock = false;
+      this.getUser();
+    }else{
+      this.showInformBlock = true;
+    }
   }
 }

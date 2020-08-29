@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 })
 
 export class MainComponent implements OnInit {
+  showInformBlock: boolean;
   card: Array<Text>;
-  main = true;
 
   constructor(
     private router: Router,
@@ -19,10 +19,13 @@ export class MainComponent implements OnInit {
     this.router.navigate(['/information']);
   }
 
+  clearStorage(): void {
+    this.user.clearLocalStorage();
+  }
+
   ngOnInit(): void {
-    if (localStorage.length !== 0) {
-      this.main = false;
-      this.card = this.user.getUser();
-    }
+    this.card = this.user.getUser();
+    this.showInformBlock = this.user.showInformBlock;
   }
 }
+

@@ -8,8 +8,8 @@ import { UserServiceService } from '../services/user-service.service';
 })
 
 export class ResultsComponent implements OnInit {
-  public card: Array<Text>;
-  public resultsWrapper = false;
+  showInformBlock: boolean;
+  card: Array<Text>;
 
   constructor(
     private router: Router,
@@ -19,10 +19,13 @@ export class ResultsComponent implements OnInit {
     this.router.navigate(['/information']);
   }
 
+  clearStorage(): void {
+    this.user.clearLocalStorage();
+  }
+
   ngOnInit(): void {
-    if (localStorage.length !== 0) {
-      this.resultsWrapper = true;
-      this.card = this.user.getUser();
-    }
+    this.user.checkStorage();
+    this.card = this.user.getUser();
+    this.showInformBlock = this.user.showInformBlock;
   }
 }
