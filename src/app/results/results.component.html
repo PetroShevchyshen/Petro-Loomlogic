@@ -1,0 +1,13 @@
+<div *ngIf="showInformBlock" class="answer-result">
+  <h1>You did not check your score </h1>
+  <h3>Please, try check your credit score</h3>
+  <button class="result-wrapper__button" (click)="goToInformationPage()">Check</button>
+</div>
+<div *ngIf="!showInformBlock" class="results-wrapper">
+  <p>Name: </p><span>{{card.name}}</span>
+  <p>Email: </p><span>{{card.email}}</span>
+  <p>Phone: </p><span>{{card.phone}}</span>
+  <img src="{{card.image}}" alt="User" class="user-information__image">
+  <p>Your score number: </p><span>{{user.randomNumber}}</span>
+  <button (click)="clearStorage()" class="result-wrapper__button">Remove</button>
+</div>
