@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserServiceService {
-  userCard: Array<Text>;
+  userCard: Array<string>;
   randomNumber = (Math.random() * 100).toFixed(0);
   buttonStatus = true;
   showImage = false;
@@ -17,7 +17,7 @@ export class UserServiceService {
     image: {},
   };
 
-  getUser(): Array<Text> {
+  getUser(): Array<string> {
     return this.userCard = this.parsedStorage;
   }
 

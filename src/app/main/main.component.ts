@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 export class MainComponent implements OnInit {
   showInformBlock: boolean;
-  card: Array<Text>;
+  card: Array<string>;
 
   constructor(
     private router: Router,
